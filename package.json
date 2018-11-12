@@ -1,0 +1,17 @@
+{
+  "name": "angelscripts-install-as-daemon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "organic-angel": "0.3.x"
+  },
+  "author": "Boris Filipov",
+  "license": "MIT",
+  "dependencies": {
+    "angelabilities-exec": "^1.0.0"
+  }
+}
