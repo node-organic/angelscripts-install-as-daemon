@@ -42,6 +42,7 @@ module.exports = function (angel) {
       dirs.push(angel.cmdData.templatePath)
     }
     let lines = await readLines(path.join(process.cwd(), '.gitignore'))
+    lines.push('/.git')
     let excludes = lines.map(v => v.startsWith('/') ? `--exclude='.${v}'` : `--exclude='${v}'`)
     dirs = dirs.map(v => `-C ${v} .`)
     let cmds = [
