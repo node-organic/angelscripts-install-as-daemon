@@ -47,7 +47,7 @@ module.exports = function (angel) {
     dirs = dirs.map(v => `-C ${v} .`)
     let cmds = [
       `mkdir -p ${path.dirname(angel.cmdData.packPath)}`,
-      `tar ${excludes.join(' ')} -zcvf ${angel.cmdData.packPath} ${dirs}`
+      `tar ${excludes.join(' ')} -zcvf ${angel.cmdData.packPath} ${dirs.join(' ')}`
     ].join(' && ')
     if (process.env.DRY) {
       return console.info(cmds)
