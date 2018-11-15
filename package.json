@@ -1,10 +1,14 @@
 {
   "name": "angelscripts-install-as-daemon",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "Angel scripts for deploying organic cells on `vps` infrastructure.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release-patch": "npm version patch",
+    "release-minor": "npm version minor",
+    "release-major": "npm version major",
+    "postversion": "npm publish && git push --tags && git push origin master"
   },
   "peerDependencies": {
     "organic-angel": "0.3.x"
@@ -13,5 +17,14 @@
   "license": "MIT",
   "dependencies": {
     "angelabilities-exec": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-organic/angelscripts-install-as-daemon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/node-organic/angelscripts-install-as-daemon/issues"
+  },
+  "homepage": "https://github.com/node-organic/angelscripts-install-as-daemon#readme"
 }
