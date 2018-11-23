@@ -1,6 +1,6 @@
 {
   "name": "angelscripts-install-as-daemon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angel scripts for deploying organic cells on `vps` infrastructure as `root cells`.",
   "main": "index.js",
   "scripts": {
