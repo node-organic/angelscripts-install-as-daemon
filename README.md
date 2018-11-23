@@ -1,6 +1,6 @@
 # angelscripts-install-as-daemon
 
-Angel scripts for deploying organic cells on `vps` infrastructure as root cells.
+Angel scripts for deploying organic cells on `vps` infrastructure as `root cells`.
 
 Root cells are those cells running under `root` user :warning:.
 
@@ -20,15 +20,8 @@ npm install angelscripts-install-as-daemon --save-dev
 
 ## Testing
 
-Organelle doesn't have a test section. Why ?
-
-Simulation of vps is really a tough task and for us is wasting of time.
-
-If you project requires 100% test coverage you're more than welcome to fork this repo.
+PRs are more than welcome :smile:
 
 ## Contributing
 
-We :hearts: contribution. Please follow these simple rules: 
-
-- Update the `README.md` with details of changes. This includes new environment variables, useful file locations and parameters.
-- Have fun :fire::dizzy:
+We :hearts: contribution. Just send PRs with nice descriptions :fire::dizzy::smile:

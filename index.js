@@ -38,7 +38,7 @@ module.exports = function (angel) {
     let dirs = [
       process.cwd()
     ]
-    if (angel.cmdData.templatePath !== '.') {
+    if (angel.cmdData.templatePath !== 'use-default') {
       dirs.push(angel.cmdData.templatePath)
     }
     let lines = await readLines(path.join(process.cwd(), '.gitignore'))
@@ -56,7 +56,7 @@ module.exports = function (angel) {
     next && next()
   })
   angel.on('install :remote', async (angel, next) => {
-    angel.do('install ' + angel.cmdData.remote + ' .', next)
+    angel.do('install ' + angel.cmdData.remote + ' use-default', next)
   })
   angel.on('install :remote :templatePath', async (angel, next) => {
     try {

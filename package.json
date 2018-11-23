@@ -1,7 +1,7 @@
 {
   "name": "angelscripts-install-as-daemon",
-  "version": "1.0.0",
-  "description": "Angel scripts for deploying organic cells on `vps` infrastructure.",
+  "version": "0.0.0",
+  "description": "Angel scripts for deploying organic cells on `vps` infrastructure as `root cells`.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
