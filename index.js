@@ -103,7 +103,6 @@ module.exports = function (angel) {
 const constructExcludes = async function () {
   let lines = []
   try {
-    throw new Error('sim')
     lines = await readLines(path.join(process.cwd(), '.gitignore'))
   } catch (e) {
     lines.push('/node_modules*')
