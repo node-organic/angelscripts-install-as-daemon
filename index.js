@@ -41,9 +41,7 @@ module.exports = function (angel) {
     if (angel.cmdData.templatePath !== 'use-default') {
       dirs.push(angel.cmdData.templatePath)
     }
-    let lines = await readLines(path.join(process.cwd(), '.gitignore'))
-    lines.push('/.git')
-    let excludes = lines.map(v => v.startsWith('/') ? `--exclude='.${v}'` : `--exclude='${v}'`)
+    let excludes = await constructExcludes()
     dirs = dirs.map(v => `-C ${v} .`)
     let cmds = [
       `mkdir -p ${path.dirname(angel.cmdData.packPath)}`,
@@ -102,11 +100,19 @@ module.exports = function (angel) {
     }
   })
 }
-
+const constructExcludes = async function () {
+  try {
+    let lines = await readLines(path.join(process.cwd(), '.gitignore'))
+    lines.push('/.git')
+    return lines.map(v => v.startsWith('/') ? `--exclude='.${v}'` : `--exclude='${v}'`)
+  } catch (e) {
+    return []
+  }
+}
 const readLines = function (absolute_path) {
   return new Promise((resolve, reject) => {
     fs.readFile(absolute_path, (err, data) => {
-      if (err) return reject(err)
+      if (err) return resolve([])
       resolve(data.toString().split('\n'))
     })
   })
