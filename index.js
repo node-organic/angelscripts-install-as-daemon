@@ -101,13 +101,15 @@ module.exports = function (angel) {
   })
 }
 const constructExcludes = async function () {
-  let lines
+  let lines = []
   try {
+    throw new Error('sim')
     lines = await readLines(path.join(process.cwd(), '.gitignore'))
   } catch (e) {
-    lines.push('/node_modules')
-    lines.push('/__tests__')
-    lines.push('/coverage')
+    lines.push('/node_modules*')
+    lines.push('/__tests__*')
+    lines.push('/coverage*')
+    lines.push('/dist*')
   }
   lines.push('/.git')
   return lines.map(v => v.startsWith('/') ? `--exclude='.${v}'` : `--exclude='${v}'`)
