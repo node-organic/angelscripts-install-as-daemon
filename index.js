@@ -30,7 +30,8 @@ module.exports = function (angel) {
     await angel.exec([
       `systemctl enable ${packagejson.name}.service`,
       `systemctl start ${packagejson.name}.service`,
-      `systemctl restart ${packagejson.name}.service`
+      `systemctl restart ${packagejson.name}.service`,
+      `echo 'deamon /etc/systemd/system/${packagejson.name}.service registered.'`
     ].join(' && '))
     next && next()
   })
@@ -69,8 +70,10 @@ module.exports = function (angel) {
       if (packagejson.osDependencies) {
         osDeps = osDeps.concat(packagejson.osDependencies)
       }
+      console.info(`packing ${packPath}...`)
       let cmds = [
         `npx angel pack ${packPath} ${angel.cmdData.templatePath}`,
+        `echo 'setup vps...'`,
         `ssh ${user}@${angel.cmdData.remote} '${[
           'apt-get update',
           `apt-get -y install ${[osDeps.join(' ')]}`,
@@ -81,6 +84,7 @@ module.exports = function (angel) {
           'nvm install ' + packagejson.engines.node
         ].join(' && ')}'`,
         `scp ${packPath} ${user}@${angel.cmdData.remote}:${destPath}/deployment.tar.gz`,
+        `echo 'upload complete ${destPath}/deployment.tar.gz'`,
         `ssh ${user}@${angel.cmdData.remote} '${[
           'cd ' + destPath,
           'tar -zxf deployment.tar.gz',
