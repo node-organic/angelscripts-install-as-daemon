@@ -101,13 +101,16 @@ module.exports = function (angel) {
   })
 }
 const constructExcludes = async function () {
+  let lines
   try {
-    let lines = await readLines(path.join(process.cwd(), '.gitignore'))
-    lines.push('/.git')
-    return lines.map(v => v.startsWith('/') ? `--exclude='.${v}'` : `--exclude='${v}'`)
+    lines = await readLines(path.join(process.cwd(), '.gitignore'))
   } catch (e) {
-    return []
+    lines.push('/node_modules')
+    lines.push('/__tests__')
+    lines.push('/coverage')
   }
+  lines.push('/.git')
+  return lines.map(v => v.startsWith('/') ? `--exclude='.${v}'` : `--exclude='${v}'`)
 }
 const readLines = function (absolute_path) {
   return new Promise((resolve, reject) => {
